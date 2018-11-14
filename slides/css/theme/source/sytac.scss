@@ -17,17 +17,27 @@
 
 
 // Override theme settings (see ../template/settings.scss)
-$backgroundColor: #111;
-
-$mainFont: 'Open Sans', sans-serif;
-$linkColor: #e7ad52;
+$backgroundColor: rgb(46,54,66);
+$mainFontSize: 42px;
+$headingLineHeight: 1.0;
+$heading1Size: 2.77em;
+$heading2Size: 2.11em;
+$heading3Size: 1.55em;
+$heading4Size: 1.00em;
+$mainFont: 'Fira Sans', sans-serif;
+$linkColor: rgb(228, 125, 38);
 $linkColorHover: lighten( $linkColor, 20% );
-$headingFont: 'Montserrat', Impact, sans-serif;
+$headingFont: 'Fira Sans', Impact, sans-serif;
 $headingTextShadow: none;
 $headingLetterSpacing: -0.03em;
 $headingTextTransform: none;
-$selectionBackgroundColor: #e7ad52;
+$selectionBackgroundColor: rgb(228, 125, 38);
 
+.reveal {
+    background: url('../../sytac-logo.svg') top left no-repeat;
+    background-size: 50px 50px;
+    background-position: 25px 25px;
+}
 
 // Theme template ------------------------------
 @import "../template/theme";

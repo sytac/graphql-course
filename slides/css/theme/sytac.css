@@ -5,12 +5,17 @@
  */
 @import url(https://fonts.googleapis.com/css?family=Montserrat:700);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic);
+.reveal {
+  background: url("../../sytac-logo.svg") top left no-repeat;
+  background-size: 50px 50px;
+  background-position: 25px 25px; }
+
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #111;
-  background-color: #111; }
+  background: #2e3642;
+  background-color: #2e3642; }
 
 .reveal {
   font-family: "Fira Sans", sans-serif;
@@ -20,12 +25,12 @@ body {
 
 ::selection {
   color: #fff;
-  background: #e7ad52;
+  background: #e47d26;
   text-shadow: none; }
 
 ::-moz-selection {
   color: #fff;
-  background: #e7ad52;
+  background: #e47d26;
   text-shadow: none; }
 
 .reveal .slides section,
@@ -44,9 +49,9 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #eee;
-  font-family: "Montserrat", Impact, sans-serif;
+  font-family: "Fira Sans", Impact, sans-serif;
   font-weight: normal;
-  line-height: 1.2;
+  line-height: 1;
   letter-spacing: -0.03em;
   text-transform: none;
   text-shadow: none;
@@ -207,20 +212,20 @@ body {
  * LINKS
  *********************************************/
 .reveal a {
-  color: #e7ad52;
+  color: #e47d26;
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
   transition: color .15s ease; }
 
 .reveal a:hover {
-  color: #f3d7ac;
+  color: #efb381;
   text-shadow: none;
   border: none; }
 
 .reveal .roll span:after {
   color: #fff;
-  background: #d08a1d; }
+  background: #a95915; }
 
 /*********************************************
  * IMAGES
@@ -242,21 +247,21 @@ body {
 
 .reveal a:hover img {
   background: rgba(255, 255, 255, 0.2);
-  border-color: #e7ad52;
+  border-color: #e47d26;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
 
 /*********************************************
  * NAVIGATION CONTROLS
  *********************************************/
 .reveal .controls {
-  color: #e7ad52; }
+  color: #e47d26; }
 
 /*********************************************
  * PROGRESS BAR
  *********************************************/
 .reveal .progress {
   background: rgba(0, 0, 0, 0.2);
-  color: #e7ad52; }
+  color: #e47d26; }
 
 .reveal .progress span {
   -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
@@ -268,4 +273,4 @@ body {
  *********************************************/
 @media print {
   .backgrounds {
-    background-color: #111; } }
+    background-color: #2e3642; } }
