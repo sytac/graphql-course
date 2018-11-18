@@ -42,3 +42,18 @@ $selectionBackgroundColor: rgb(228, 125, 38);
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------
+
+#usecases-2 {
+    .devices {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    img {
+        border: 0;
+        box-shadow: none;
+        background: none;
+        width: 20%;
+    }
+}

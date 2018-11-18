@@ -274,3 +274,14 @@ body {
 @media print {
   .backgrounds {
     background-color: #2e3642; } }
+
+#usecases-2 .devices {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+
+#usecases-2 img {
+  border: 0;
+  box-shadow: none;
+  background: none;
+  width: 20%; }
