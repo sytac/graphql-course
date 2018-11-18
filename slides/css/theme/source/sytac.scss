@@ -42,6 +42,13 @@ $selectionBackgroundColor: rgb(228, 125, 38);
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------
+img {
+    border: 0 !important;
+    box-shadow: none !important;
+    background: none !important;
+    width: auto;
+    height: auto;
+}
 
 #usecases-2 {
     .devices {
@@ -51,9 +58,18 @@ $selectionBackgroundColor: rgb(228, 125, 38);
     }
 
     img {
-        border: 0;
-        box-shadow: none;
-        background: none;
         width: 20%;
+    }
+}
+
+#usecases-3 {
+    img {
+        width: 50%;
+    }
+}
+
+#usecases-4 {
+    img {
+        width: 50%;
     }
 }

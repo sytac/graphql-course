@@ -275,13 +275,20 @@ body {
   .backgrounds {
     background-color: #2e3642; } }
 
+img {
+  border: 0 !important;
+  box-shadow: none !important;
+  background: none !important;
+  width: auto;
+  height: auto; }
+
 #usecases-2 .devices {
   display: flex;
   flex-direction: row;
   justify-content: space-between; }
 
 #usecases-2 img {
-  border: 0;
-  box-shadow: none;
-  background: none;
   width: 20%; }
+
+#usecases-3 img {
+  width: 50%; }
