@@ -68,6 +68,7 @@ const typeDefs = `
   type Author {
     id: ID!
     name: String!
+    posts: [Post]!
   }
 
   type Post {
@@ -85,6 +86,9 @@ const resolvers = {
   Post: {
     author: (parent) => authors.find(author => author.id === parent.authorId),
     comments: (parent) => comments.filter(comment => parent.commentIds.includes(comment.id))
+  },
+  Author: {
+    posts: (parent) => posts.filter(post => post.authorId === parent.id)
   }
 };
 
