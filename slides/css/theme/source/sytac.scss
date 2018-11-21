@@ -43,8 +43,25 @@ $selectionBackgroundColor: rgb(228, 125, 38);
 @import "../template/theme";
 // ---------------------------------------------
 
+.reveal h1 {
+    font-size: 2.5em;
+    font-weight: 500;
+}
+
+.reveal h3 {
+    font-weight: 500;
+    margin-bottom: 1em;
+}
+
 .reveal code {
-    font-family: 'Fira Code';
+    font-family: 'Fira Code', monospace;
+    font-size: 1.35em;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.reveal pre code {
+    padding: 1em;
 }
 
 img {
@@ -56,39 +73,25 @@ img {
 }
 
 #usecases-2 {
-    .devices {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    img {
-        width: 20%;
-    }
+  img {
+    max-width: 75%;
+  }
 }
 
 #usecases-3 {
     img {
-        width: 50%;
+        max-width: 65%;
     }
 }
 
 #usecases-4 {
     img {
-        width: 50%;
+        max-width: 75%;
     }
 }
 
 #usecases-5 {
-    .public-apis {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
     img {
-        width: 30%;
-        max-height: 175px;
+        max-width: 70%;
     }
 }
