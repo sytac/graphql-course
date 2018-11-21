@@ -76,6 +76,26 @@ const typeDefs = `
     }
 `;
 
+/*
+JavaScript quick intro 
+
+Anonymous functions
+const fun = (param) => param; // gets a param, returns a param
+const fun = (param) => { return param; }; // Same as above but long-form, for multiline functions
+
+Array functions
+Array.find(function(item)) // Returns a an item matching the predicate, function should return a boolean
+Array.filter(function(item)) // Returns an array of items matching the filter predicate, function should return a boolean
+Array.map(function(item)) // Iterates over the array and applies the function to each element and returns the result in a new array
+Array.reduce(function(acc, item), init) // Iterates over the array and accumulates the result of the function into the first argument
+Array.slice(start, end) // returns a selection of the array from start until the end
+Array.sort(function(a, b)) // Sorts the array (inplace!) based on the outcome of the function, the function should return -1, 0 or 1
+                           // make sure to create a copy [...arr].sort(...)
+Array.reverse() // reverses an Array
+
+See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+*/
+
 const resolvers = {
   Query: {
     hello: () => 'Hello'
