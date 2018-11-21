@@ -275,6 +275,9 @@ body {
   .backgrounds {
     background-color: #2e3642; } }
 
+.reveal code {
+  font-family: 'Fira Code'; }
+
 img {
   border: 0 !important;
   box-shadow: none !important;
@@ -291,4 +294,7 @@ img {
   width: 20%; }
 
 #usecases-3 img {
+  width: 50%; }
+
+#usecases-4 img {
   width: 50%; }
