@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/theme/sytac.css" />
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="lib/css/zenburn.css" />
+    <link rel="stylesheet" href="lib/css/an-old-hope.css" />
 
     <!-- Printing and PDF exports -->
     <script>
@@ -31,172 +31,170 @@
     <div class="reveal">
       <div class="slides">
         <section id="intro">
-			<h1>Introduction to GraphQL</h1>
-			<h5>By Jorigis Šnaras and Tom Hastjarjanto</h5>
-	
-		</section>
-		<section>
-			<section id="intro-1"><h1>What is GraphQL</h1></section>
-			<section>
-				<h3>Describe your data</h3>
-				<pre><code data-trim data-noescape>
-					type Project {
-						name: String
-						tagline: String
-						contributors: [User]
-					}
-					</code></pre>
-			</section>
-			<section id="intro-2">
-				<h3>Ask for what you want</h3>
-				<pre><code data-trim data-noescape>
-						{
-							project(name: "GraphQL") {
-								tagline
-							}
-						}
-					</code></pre>
-			</section>
-			<section id="intro-3">
-				<h3>Get predictable results</h3>
-				<pre><code data-trim data-noescape>
-					{
-						"project": {
-							"tagline": "A query language for APIs"
-						}
-					}
-				</code></pre>
-			</section>
-		</section>
-		<section id="why">
-				<section id="why-1"><h1>Why should you choose GraphQL?</h1></section>
-				<section id="why-2">
-				  <h3>Faster frontend development</h3>
-				  <ul>
-					<li>
-					  Spend less time composing data from different endpoints and focus
-					  on what should be displayed
-					</li>
-					<li>
-					  Superb Out-of-the-box tooling and libraries … makes interacting
-					  with the backend a lot smoother
-					</li>
-					<li>Same protocol for queries, mutations and real-time updates</li>
-				  </ul>
-				</section>
-				<section id="why-3">
-				  <h3>Less burden on API teams</h3>
-				  <ul>
-					<li>
-					  No need to make specific endpoints as each client can request
-					  specifically what they need
-					</li>
-					<li>
-					  Since all data is available, there is less focus on specific use
-					  cases
-					</li>
-					<li>
-					  No need to explicitly document APIs – the schema is the
-					  documentation
-					</li>
-				  </ul>
-				</section>
-		</section>
-		<section id="usecases">
-				<section id="usecases-1"><h1>Use cases</h1></section>
-				<section id="usecases-2"><h3>Multiple clients</h3>
-					<div class="devices">
-						<img src="/img/phone-zones.svg" />
-						<img src="/img/watch-zones.svg" />
-						<img src="/img/laptop-zones.svg" />
-					</div>
-
-				</section>
-				<section id="usecases-3"><h3>Aggregation of API's</h3>
-					<img src="/img/usecases.svg" />
-				</section>
-				<section id="usecases-4"><h3>Real-time API's</h3>
-					<img src="/img/realtime.svg" />
-				</section>
-				<section id="usecases-5"><h1>Public API's</h1>
-					<div class="public-apis">
-						<img src="img/yelp.png" />
-						<img src="img/shopify.svg" />
-						<img src="img/github.svg" />
-					</div>
-				</section>
-
-		</section>
-		<section>
-				<section id="rest-1"><h1>GraphQL vs REST</h1></section>
-				<section id="rest-2"><h1>Graph shaped data</h1></section>
-				<section>
-					<h3>GraphQL vs REST</h3>
-					<ul>
-						<li>Proper REST is difficult</li><!-- Maturity level 3, media -->
-					</ul>
-				</section>
-				<section id="rest-4">
-					<h3>Proper REST</h3>
-					<pre><code data-trim>
-							HTTP/1.1 201 Created
-							Location: http://royalhope.nhs.uk/slots/1234/appointment
-		
-							<appointment>
-								<slot id = "1234" doctor = "mjones" start = "1400" end = "1450"/>
-								<patient id = "jsmith"/>
-								<link rel = "/linkrels/appointment/cancel"
-									uri = "/slots/1234/appointment"/>
-								<link rel = "/linkrels/appointment/addTest"
-									uri = "/slots/1234/appointment/tests"/>
-								<link rel = "self"
-									uri = "/slots/1234/appointment"/>
-								<link rel = "/linkrels/appointment/changeTime"
-									uri = "/doctors/mjones/slots?date=20100104&status=open"/>
-								<link rel = "/linkrels/appointment/updateContactInfo"
-									uri = "/patients/jsmith/contactInfo"/>
-								<link rel = "/linkrels/help"
-									uri = "/help/appointment"/>
-							</appointment>
-					</code></pre>
-				</section>
-				<section id="rest-5">
-				  <h3>Map resources/operations to HTTP</h3>
-				  <p>vs defining types and creating mutations</p>
-					<!-- Hard to express intent sometimes in terms of HTTP verbs. For example, if you want to deactviate some resource,
-					is that a property? is that an operation? A post, put or patch? -->
-				</section>
-				<section id="rest-6">
-					<h3>HTTP endpoint</h3>
-					<p>/graphql</p>
-				</section>
-				<section id="rest-7"><h1>Discoverability</h1>
-				<!-- screenshot of Graphiql -->
-				</section>
-				<section id="rest-8">
-					<h3>Caveats</h3>
-					<ul>
-						<li>Ecosystem is young, moves fast</li>
-						<li>Less GraphQL experience in the wild</li>
-						<li>No drop in replacement for REST, HTTP is used differently in GraphQL
-							<ul>
-								<li>Caching</li>
-								<li>Routing</li>
-								<li>Load Balancing</li>
-							</ul>
-						</li>
-					</ul>
-				</section>
-		</section>
+      <h1>Introduction to GraphQL</h1>
+      <h5>By Jorigis Šnaras and Tom Hastjarjanto</h5>
+  
+    </section>
+    <section>
+      <section id="intro-1"><h1>What is GraphQL</h1></section>
+      <section>
+        <h3>Describe your data</h3>
+        <pre><code data-trim data-noescape>
+          type Project {
+            name: String
+            tagline: String
+            contributors: [User]
+          }
+          </code></pre>
+      </section>
+      <section id="intro-2">
+        <h3>Ask for what you want</h3>
+        <pre><code data-trim data-noescape class="nohighlight">
+            {
+              project(name: "GraphQL") {
+                tagline
+              }
+            }
+          </code></pre>
+      </section>
+      <section id="intro-3">
+        <h3>Get predictable results</h3>
+        <pre><code data-trim data-noescape class="nohighlight">
+          {
+            "project": {
+              "tagline": "A query language for APIs"
+            }
+          }
+        </code></pre>
+      </section>
+    </section>
+    <section id="why">
+        <section id="why-1"><h1>Why should you choose GraphQL?</h1></section>
+        <section id="why-2">
+          <h3>Faster frontend development</h3>
+          <ul>
+          <li>
+            Spend less time composing data from different endpoints and focus
+            on what should be displayed
+          </li>
+          <li>
+            Superb Out-of-the-box tooling and libraries … makes interacting
+            with the backend a lot smoother
+          </li>
+          <li>Same protocol for queries, mutations and real-time updates</li>
+          </ul>
+        </section>
+        <section id="why-3">
+          <h3>Less burden on API teams</h3>
+          <ul>
+          <li>
+            No need to make specific endpoints as each client can request
+            specifically what they need
+          </li>
+          <li>
+            Since all data is available, there is less focus on specific use
+            cases
+          </li>
+          <li>
+            No need to explicitly document APIs – the schema is the
+            documentation
+          </li>
+          </ul>
+        </section>
+    </section>
+    <section id="usecases">
+        <section id="usecases-1">
+          <h1>Use cases</h1>
+        </section>
+        <section id="usecases-2">
+          <h3>Multiple clients</h3>
+          <div class="devices">
+            <img src="/img/clients.svg" />
+          </div>
+        </section>
+        <section id="usecases-3">
+          <h3>Aggregation of APIs</h3>
+          <img src="/img/usecases.svg" />
+        </section>
+        <section id="usecases-4">
+          <h3>Real-time APIs</h3>
+          <img src="/img/realtime.svg" />
+        </section>
+        <section id="usecases-5">
+          <h3>Public APIs</h3>
+          <img src="/img/public.svg" />
+        </section>
+    </section>
+    <section>
+        <section id="rest-1"><h1>GraphQL vs REST</h1></section>
+        <section id="rest-2"><h1>Graph shaped data</h1></section>
+        <section>
+          <h3>GraphQL vs REST</h3>
+          <ul>
+            <li>Proper REST is difficult</li><!-- Maturity level 3, media -->
+          </ul>
+        </section>
+        <section id="rest-4">
+          <h3>Proper REST</h3>
+          <pre><code data-trim>
+              HTTP/1.1 201 Created
+              Location: http://royalhope.nhs.uk/slots/1234/appointment
+    
+              <appointment>
+                <slot id = "1234" doctor = "mjones" start = "1400" end = "1450"/>
+                <patient id = "jsmith"/>
+                <link rel = "/linkrels/appointment/cancel"
+                  uri = "/slots/1234/appointment"/>
+                <link rel = "/linkrels/appointment/addTest"
+                  uri = "/slots/1234/appointment/tests"/>
+                <link rel = "self"
+                  uri = "/slots/1234/appointment"/>
+                <link rel = "/linkrels/appointment/changeTime"
+                  uri = "/doctors/mjones/slots?date=20100104&status=open"/>
+                <link rel = "/linkrels/appointment/updateContactInfo"
+                  uri = "/patients/jsmith/contactInfo"/>
+                <link rel = "/linkrels/help"
+                  uri = "/help/appointment"/>
+              </appointment>
+          </code></pre>
+        </section>
+        <section id="rest-5">
+          <h3>Map resources/operations to HTTP</h3>
+          <p>vs defining types and creating mutations</p>
+          <!-- Hard to express intent sometimes in terms of HTTP verbs. For example, if you want to deactviate some resource,
+          is that a property? is that an operation? A post, put or patch? -->
+        </section>
+        <section id="rest-6">
+          <h3>HTTP endpoint</h3>
+          <p>/graphql</p>
+        </section>
+        <section id="rest-7"><h1>Discoverability</h1>
+        <!-- screenshot of Graphiql -->
+        </section>
+        <section id="rest-8">
+          <h3>Caveats</h3>
+          <ul>
+            <li>Ecosystem is young, moves fast</li>
+            <li>Less GraphQL experience in the wild</li>
+            <li>No drop in replacement for REST, HTTP is used differently in GraphQL
+              <ul>
+                <li>Caching</li>
+                <li>Routing</li>
+                <li>Load Balancing</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+    </section>
        
-		<section id="conclusion">
-			<h1>TL;DL</h1>
-			<ul>
-				<li>GraphQL is a query (and schema definition) language</li>
-				<li>GraphQL solves client/server communication patterns more flexible and less tedious</li>
-				<li>GraphQL is used to serve multiple clients from a single backend, API aggregation and public web API's</li>
-			</ul>
-		</section>
+    <section id="conclusion">
+      <h1>TL;DL</h1>
+      <ul>
+        <li>GraphQL is a query (and schema definition) language</li>
+        <li>GraphQL solves client/server communication patterns more flexible and less tedious</li>
+        <li>GraphQL is used to serve multiple clients from a single backend, API aggregation and public web API's</li>
+      </ul>
+    </section>
       </div>
     </div>
 
