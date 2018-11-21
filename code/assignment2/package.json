@@ -1,14 +1,17 @@
 {
-  "name": "assignment2",
+  "name": "assignment1",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "graphql-yoga": "1.16.7"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.6"
   }
 }
