@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/theme/sytac.css" />
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="lib/css/zenburn.css" />
+    <link rel="stylesheet" href="lib/css/an-old-hope.css" />
 
     <!-- Printing and PDF exports -->
     <script>
@@ -33,6 +33,16 @@
         <section id="intro">
           <h1>GraphQL specs</h1>
           <h5>By Jorigis Šnaras and Tom Hastjarjanto</h5>
+        </section>
+        <section>
+            <h3>Basic Types</h3>
+            <pre><code data-trim data-noescape>
+String
+Int
+Float
+Boolean
+ID
+            </code></pre>
         </section>
         <section>
           <h3>Type definitions</h3>
@@ -60,6 +70,16 @@ type Post {
    body: String
    author: User
    comments: [Comment]
+}
+            </code></pre>
+        </section>
+        <section>
+            <h3>ID type</h3>
+            <pre><code>
+type Author {
+    id: ID!
+    name: String!
+    posts: [Post]!
 }
             </code></pre>
         </section>
