@@ -19,6 +19,24 @@ const posts = [
     commentIds: [],
     authorId: 2,
   },
+  {
+    title: 'Post 4',
+    body: 'Post body 4',
+    commentIds: [],
+    authorId: 2,
+  },
+  {
+    title: 'Post 5',
+    body: 'Post body 5',
+    commentIds: [],
+    authorId: 1,
+  },
+  {
+    title: 'Post 6',
+    body: 'Post body 6',
+    commentIds: [],
+    authorId: 2,
+  },
 ];
 
 const comments = [
@@ -57,7 +75,7 @@ const authors = [
 
 const typeDefs = `
   type Query {
-    posts(authorId: ID): [Post]!
+    posts: [Post]!
   }
 
   type Comment {
@@ -68,7 +86,7 @@ const typeDefs = `
   type Author {
     id: ID!
     name: String!
-    posts: [Post]!
+    posts(limit: Int): [Post]!
   }
 
   type Post {
@@ -81,15 +99,19 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    posts: (_, { authorId }) => posts,
+    posts: () => posts,
   },
   Post: {
-    author: (parent) => authors.find(author => author.id === parent.authorId),
-    comments: (parent) => comments.filter(comment => parent.commentIds.includes(comment.id))
+    author: parent => authors.find(author => author.id === parent.authorId),
+    comments: parent =>
+      comments.filter(comment => parent.commentIds.includes(comment.id)),
   },
   Author: {
-    posts: (parent) => posts.filter(post => post.authorId === parent.id)
-  }
+    posts: (parent, { limit }) =>
+      posts
+        .filter(post => post.authorId === parent.id)
+        .slice(0, limit ? limit : posts.length),
+  },
 };
 
 const server = new GraphQLServer({ typeDefs, resolvers });
