@@ -298,3 +298,13 @@ img {
 
 #usecases-4 img {
   width: 50%; }
+
+#usecases-5 .public-apis {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; }
+
+#usecases-5 img {
+  width: 30%;
+  max-height: 175px; }
