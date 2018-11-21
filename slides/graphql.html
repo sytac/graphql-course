@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Sytac Graphql Workshop - 1 Introduction</title>
+
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/sytac.css" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? 'css/print/pdf.css'
+        : 'css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section id="intro">
+          <h1>GraphQL specs</h1>
+          <h5>By Jorigis Šnaras and Tom Hastjarjanto</h5>
+        </section>
+        <section>
+          <h3>Type definitions</h3>
+          <pre><code data-trim data-noescape>
+type Comment {
+   nickname: String
+   message: String                    
+}
+            </code></pre>
+        </section>
+        <section>
+          <h3>Relations</h3>
+          <pre><code data-trim data-noescape>
+type User {
+   name: String
+   posts: [Post]
+}
+            </code></pre>
+        </section>
+        <section>
+          <h3>Relations (2)</h3>
+          <pre><code data-trim data-noescape>
+type Post {
+   title: String
+   body: String
+   author: User
+   comments: [Comment]
+}
+            </code></pre>
+        </section>
+        <section>
+          <h3>Mandatory fields</h3>
+          <pre><code data-trim data-noescape>
+type User {
+   name: String!
+   posts: [Post]!
+}
+
+type Post {
+   title: String!
+   body: String!
+   author: User!
+   comments: [Comment]!
+}
+            </code></pre>
+        </section>
+        <section>
+          <h3>Enums</h3>
+          <pre><code data-trim data-noescape>
+enum PostPublishingState {
+   DRAFT
+   PUBLISHED
+}
+
+type Post {
+   title: String!
+   body: String!
+   author: User!
+   publishingState: PostPublishingState!
+   comments: [Comment]!
+}
+            </code></pre>
+        </section>
+        <section>
+          <h3>Summary</h3>
+          <pre><code data-trim data-noescape>              
+enum PostPublishingState {
+   DRAFT
+   PUBLISHED
+}
+
+type Comment {
+   nickname: String
+   message: String
+}
+
+type Author {
+   id: ID!
+   name: String!
+   posts: [Post]!
+}
+
+type Post {
+   id: ID!
+   title: String!
+   body: String!
+   author: User!
+   publishingState: PostState!
+   comments: [Comment]!
+}
+            </code></pre>
+        </section>
+        <section>
+          <h3>Query definition</h3>
+          <pre><code data-trim data-noescape>   
+type Query {
+   posts: [Post]!
+}
+
+schema {
+   query: Query
+}
+            </code></pre>
+        </section>
+        <section>
+          <h3>Query</h3>
+          <pre><code data-trim data-noescape>
+{
+   posts {
+      title
+      body
+      author {
+         name
+      }
+
+      comments {
+         nickname
+         message
+      }
+   }
+}
+            </code></pre>
+        </section>
+        <section>
+          <h3>Query (2)</h3>
+          <pre><code data-trim data-noescape>
+{
+   posts {
+      title       
+      body
+   }
+}
+            </code></pre>
+        </section>
+        <section>
+          <h3>Variables</h3>
+          <pre><code data-trim data-noescape>
+type Query {
+   posts: [Post]!
+   post($id: ID): Post
+}
+            </code></pre>
+        </section>
+        <section>
+          <h3>Variables (2)</h3>
+          <pre><code data-trim data-noescape>
+{
+   post(id: 1) {
+      title 
+      body
+      author {
+         name
+      }
+   }
+}
+            </code></pre>
+        </section>
+        <section>
+          <h3>Variables (3)</h3>
+          <pre><code data-trim data-noescape>
+{ 
+   posts {
+      title
+      body(limit: 1)
+   }
+}
+            </code></pre>
+        </section>
+        <section>
+          <h3>Mutations</h3>
+          <pre><code data-trim data-noescape>
+type Mutation {
+   createPost(title: String, body: String, authorId: ID): Post
+}
+            </code></pre>
+        </section>
+        <section>
+            <h3>Mutations</h3>
+            <pre><code data-trim data-noescape>
+mutation {
+   createPost(title: "New Post", body: "Hello", authorId: 1) {
+      title
+      body
+      publishState
+   }
+}
+            </code></pre>
+        </section>
+        <section>
+            <h3>Assignment - write a query</h3>
+            <ul>
+                <li>List all posts</li>
+                <li>For each post show the body, title and author</li>
+                <li>Below each post, show two articles of the same author</li>
+                <li>There will be a feature to collapse all comments, this shouldn't require a page refresh</li>
+            </ul>
+        </section>
+        <section id="conclusion">
+          <h1>What next?</h1>
+          <ul>
+                <li>Fragments</li>
+                <li>Operation names</li>
+                <li>Variables</li>
+                <li>Interfaces</li>
+                <li>Union types</li>
+                <li>Directives</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          {
+            src: 'plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.registerLanguage('graphql', function(e) {
+                return {
+                  aliases: ['gql'],
+                  k: {
+                    keyword:
+                      'query mutation subscription|10 type input schema directive interface union scalar fragment|10 enum on ...',
+                    literal: 'true false null',
+                  },
+                  c: [
+                    e.HCM,
+                    e.QSM,
+                    e.NM,
+                    { cN: 'type', b: '[^\\w][A-Z][a-z]', e: '\\W', eE: !0 },
+                    { cN: 'literal', b: '[^\\w][A-Z][A-Z]', e: '\\W', eE: !0 },
+                    { cN: 'variable', b: '\\$', e: '\\W', eE: !0 },
+                    { cN: 'keyword', b: '[.]{2}', e: '\\.' },
+                    { cN: 'meta', b: '@', e: '\\W', eE: !0 },
+                  ],
+                  i: /([;<']|BEGIN)/,
+                };
+              });
+              hljs.initHighlightingOnLoad();
+            },
+          },
+        ],
+      });
+    </script>
+  </body>
+</html>
