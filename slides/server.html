@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Sytac Graphql Workshop - 1 Introduction</title>
+
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/sytac.css" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/an-old-hope.css" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? 'css/print/pdf.css'
+        : 'css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section id="intro">
+          <h1>Server architecture / implementation</h1>
+          <h5>By Jorigis Šnaras and Tom Hastjarjanto</h5>
+        </section>
+        <section>
+          <h1>Single Http endpoint</h1>
+          <h2>https://example.com/v1/graphql</h2>
+        </section>
+        <section>
+          <h3>Data mapping</h3>
+          <pre><code data-trim data-noescape class="nohighlight">
+              query {
+                  posts {
+                    title
+                    body
+                  }
+              }
+          </code></pre>
+          <pre><code data-trim>
+              schema {
+                query: Query
+              }
+            
+              type Query {
+                posts: [Post]!
+              }
+          </code></pre>
+        </section>
+        <section>
+          <h3>Data mapping</h3>
+          <pre><code data-trim>
+              const resolvers = {
+                Query: {
+                  posts: () => fetch('/v1/posts')
+                }
+              };
+          </code></pre>
+          <pre><code data-trim>
+              type Query {
+                posts: [Post]!
+              }
+
+              type Post {
+                title: String!
+                body: String!
+              }
+          </code></pre>
+        </section>
+        <section>
+          <h3>Data mapping</h3>
+          <pre><code data-trim>
+                const resolvers = {
+                  Post: {
+                    title: post => post.title, // Default implementation
+                    body: post => post.body
+                  }
+                };
+            </code></pre>
+          <pre><code data-trim>
+                type Post {
+                  title: String!
+                  body: String!
+                }
+            </code></pre>
+        </section>
+        <section>
+          <h3>Data mapping</h3>
+          <pre><code data-trim data-noescape class="nohighlight">
+                query {
+                    posts {
+                      title
+                      author {
+                        name
+                      }
+                    }
+                }
+            </code></pre>
+        </section>
+        <section>
+          <h3>Data mapping</h3>
+          <pre><code data-trim>
+                const resolvers = {
+                  ...
+                  Post: {
+                    author: post =>
+                      fetch('/v1/author/' + post.authorId)
+                  },
+                };
+            </code></pre>
+          <pre><code data-trim>
+                type Query {
+                  posts: [Post]!
+                }
+  
+                type Post {
+                  title: String!
+                  author: Author
+                }
+
+                type Author {
+                  name: String!
+                }
+            </code></pre>
+        </section>
+        <section>
+          <h3>Data mapping</h3>
+          <pre><code data-trim data-noescape class="nohighlight">
+                  query {
+                      posts {
+                        title
+                        author {
+                          name
+                        }
+                      }
+                  }
+              </code></pre>
+        </section>
+        <section>
+          <h3>Data mapping</h3>
+          <pre><code data-trim>
+                const resolvers = {
+                  Query: {
+                    posts: (_, { limit }) => 
+                      fetch('/v1/posts').then(posts => posts.slice(0, limit))
+                  }
+                };
+              </code></pre>
+          <pre><code data-trim>
+                  type Query {
+                    posts(limit: Int): [Post]!
+                  }
+              </code></pre>
+        </section>
+        <section>
+            <h3>Assignment - preperation</h3>
+            <pre><code data-trim data-noescape>
+                  cd graphql-course/code/assignment2
+                  npm i
+                  npm start
+            </code></pre>
+            <small>Open your browser and visit http://localhost:4000</small>
+        </section>
+        <section>
+            <h3>Assignment - A basic server</h3>
+            <ul>
+                <li>Create Type definitions for the data model</li>
+                <li>Create Resolvers</li>
+                <li>Flights should be sortable by departure or arrival time</li>
+                <li>Advanced: Create a mutation to add flights</li>
+            </ul>
+            <small>Question: how many REST endpoints do we need to call to get this data?</small>
+        </section>
+        <section>
+                <h1>Assignment - solution</h1>
+        </section>
+        <section id="conclusion">
+          <h1>What next?</h1>
+          <ul>
+                <li>Fragments</li>
+                <li>Operation names</li>
+                <li>Variables</li>
+                <li>Interfaces</li>
+                <li>Union types</li>
+                <li>Directives</li>
+          </ul>
+        </section>
+        <section id="conclusion">
+          <h1>TL;DL</h1>
+          <ul>
+            <li>
+              GraphQL servers resolve queries using types, fields and resolvers
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          {
+            src: 'plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.registerLanguage('graphql', function(e) {
+                return {
+                  aliases: ['gql'],
+                  k: {
+                    keyword:
+                      'query mutation subscription|10 type input schema directive interface union scalar fragment|10 enum on ...',
+                    literal: 'true false null',
+                  },
+                  c: [
+                    e.HCM,
+                    e.QSM,
+                    e.NM,
+                    { cN: 'type', b: '[^\\w][A-Z][a-z]', e: '\\W', eE: !0 },
+                    { cN: 'literal', b: '[^\\w][A-Z][A-Z]', e: '\\W', eE: !0 },
+                    { cN: 'variable', b: '\\$', e: '\\W', eE: !0 },
+                    { cN: 'keyword', b: '[.]{2}', e: '\\.' },
+                    { cN: 'meta', b: '@', e: '\\W', eE: !0 },
+                  ],
+                  i: /([;<']|BEGIN)/,
+                };
+              });
+              hljs.initHighlightingOnLoad();
+            },
+          },
+        ],
+      });
+    </script>
+  </body>
+</html>

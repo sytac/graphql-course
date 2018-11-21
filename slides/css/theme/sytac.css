@@ -308,3 +308,6 @@ img {
 #usecases-5 img {
   width: 30%;
   max-height: 175px; }
+
+.nohighlight {
+  background: #1C1D21; }

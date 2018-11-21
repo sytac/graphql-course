@@ -74,6 +74,10 @@ const authors = [
 ];
 
 const typeDefs = `
+  schema {
+    query: Query
+  }
+
   type Query {
     posts: [Post]!
   }
@@ -99,7 +103,7 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    posts: () => posts,
+    posts: (parent) => posts,
   },
   Post: {
     author: parent => authors.find(author => author.id === parent.authorId),
