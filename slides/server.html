@@ -14,7 +14,14 @@
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="lib/css/an-old-hope.css" />
-
+    <style>
+  .reveal code {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8em;
+      font-weight: 500;
+      line-height: 1.4;
+  }
+    </style>
     <!-- Printing and PDF exports -->
     <script>
       var link = document.createElement('link');
@@ -120,10 +127,6 @@
                 };
             </code></pre>
           <pre><code data-trim>
-                type Query {
-                  posts: [Post]!
-                }
-  
                 type Post {
                   title: String!
                   author: Author
@@ -186,14 +189,68 @@
                 <h1>Assignment - solution</h1>
         </section>
         <section id="conclusion">
-          <h1>What next?</h1>
+          <h1>FAQ</h1>
+        </section>
+        <section>
+          <h3>Error handling?</h3>
+          <pre>
+            <code data-trim>
+                {
+                  "errors": [
+                    {
+                      "message": "Name for character with ID 1002 could not be fetched.",
+                      "locations": [ { "line": 6, "column": 7 } ],
+                      "path": [ "hero", "heroFriends", 1, "name" ],
+                      "extensions": {
+                        "code": "CAN_NOT_FETCH_BY_ID",
+                        "timestamp": "Fri Feb 9 14:33:09 UTC 2018"
+                      }
+                    }
+                  ]
+                }                
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>Authentication?</h3>
+          <p>Cookies or header tokens</p>
+        </section>
+        <section>
+            <h3>Caching?</h3>
+            <ul>
+              <li>Cache data at the resolver level, or cache the underlying REST calls</li>
+              <li>Persisted queries</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Query abuse?</h3>
+            <ul>
+              <li>Max depth</li>
+              <li>Query complexity cost limits</li>
+              <li>Persisted queries</li>
+            </ul>
+        </section>
+        <section>
+          <h3>Profiling and Monitoring?</h3>
           <ul>
-                <li>Fragments</li>
-                <li>Operation names</li>
-                <li>Variables</li>
-                <li>Interfaces</li>
-                <li>Union types</li>
-                <li>Directives</li>
+            <li>Apollo engine (proprietary)</li>
+            <li>Apollo tracing</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Deprecation?</h3>
+          <pre><code data-trim>
+              type ExampleType {
+                newField: String
+                oldField: String @deprecated(reason: "Use `newField`.")
+              }
+          </code></pre>
+        </section>
+        <section>
+          <h3>Versioning?</h3>
+          <ul>
+            <li>Prefer an append-only scheme</li>
+            <li>Version the endpoints (E.g. /v1/graphql)</li>
           </ul>
         </section>
         <section id="conclusion">
@@ -201,6 +258,9 @@
           <ul>
             <li>
               GraphQL servers resolve queries using types, fields and resolvers
+            </li>
+            <li>
+              GraphQL based servers have patterns for common concerns of API's in production
             </li>
           </ul>
         </section>
