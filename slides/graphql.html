@@ -14,7 +14,14 @@
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="lib/css/an-old-hope.css" />
-
+    <style>
+        .reveal code {
+            font-family: 'Fira Code', monospace;
+            font-size: 1em;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+          </style>
     <!-- Printing and PDF exports -->
     <script>
       var link = document.createElement('link');
@@ -35,8 +42,8 @@
           <h5>By Jorigis Šnaras and Tom Hastjarjanto</h5>
         </section>
         <section>
-            <h3>Basic Types</h3>
-            <pre><code data-trim data-noescape>
+          <h3>Basic Types</h3>
+          <pre><code data-trim data-noescape>
 String
 Int
 Float
@@ -74,8 +81,8 @@ type Post {
             </code></pre>
         </section>
         <section>
-            <h3>ID type</h3>
-            <pre><code data-trim data-noescape>
+          <h3>ID type</h3>
+          <pre><code data-trim data-noescape>
 type Author {
     id: ID!
     name: String!
@@ -178,7 +185,7 @@ schema {
         </section>
         <section>
           <h3>Query (2)</h3>
-          <pre><code data-trim data-noescape>
+          <pre><code data-trim data-noescape class="nohighlight">
 {
    posts {
       title       
@@ -198,7 +205,7 @@ type Query {
         </section>
         <section>
           <h3>Variables (2)</h3>
-          <pre><code data-trim data-noescape>
+          <pre><code data-trim data-noescape class="nohighlight">
 {
    post(id: 1) {
       title 
@@ -212,7 +219,7 @@ type Query {
         </section>
         <section>
           <h3>Variables (3)</h3>
-          <pre><code data-trim data-noescape>
+          <pre><code data-trim data-noescape class="nohighlight">
 { 
    posts {
       title
@@ -230,8 +237,8 @@ type Mutation {
             </code></pre>
         </section>
         <section>
-            <h3>Mutations</h3>
-            <pre><code data-trim data-noescape>
+          <h3>Mutations</h3>
+          <pre><code data-trim data-noescape class="nohighlight">
 mutation {
    createPost(title: "New Post", body: "Hello", authorId: 1) {
       title
@@ -242,36 +249,34 @@ mutation {
             </code></pre>
         </section>
         <section>
-            <h3>Assignment - preperation</h3>
-            <pre><code data-trim data-noescape>
+          <h3>Assignment - preperation</h3>
+          <pre><code data-trim data-noescape>
                   cd graphql-course/code/assignment1
                   npm i
                   npm start
             </code></pre>
-            <small>Open your browser and visit http://localhost:4000</small>
+          <small>Open your browser and visit http://localhost:4000</small>
         </section>
-        <section>
-            <h3>Assignment - write a query</h3>
-            <ul>
-                <li>List all posts</li>
-                <li>For each post show the body, title and author</li>
-                <li>Below each post, show two articles of the same author</li>
-                <li>There will be a feature to collapse all comments, this shouldn't require a page refresh</li>
-            </ul>
-            <small>Question: how many REST endpoints do we need to call to get this data?</small>
+        <section id="assignment1">
+          <h3>Assignment - write a query</h3>
+          <img src="img/assignment-1.svg" />
+          <aside class="notes">
+            <small
+              >Question: how many REST endpoints do we need to call to get this
+              data?</small
+            >
+          </aside>
         </section>
-        <section>
-                <h1>Assignment - solution</h1>
-        </section>
+        <section><h1>Assignment - solution</h1></section>
         <section id="conclusion">
           <h1>What next?</h1>
           <ul>
-                <li>Fragments</li>
-                <li>Operation names</li>
-                <li>Variables</li>
-                <li>Interfaces</li>
-                <li>Union types</li>
-                <li>Directives</li>
+            <li>Fragments</li>
+            <li>Operation names</li>
+            <li>Variables</li>
+            <li>Interfaces</li>
+            <li>Union types</li>
+            <li>Directives</li>
           </ul>
         </section>
       </div>
