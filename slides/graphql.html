@@ -135,7 +135,11 @@ type Comment {
    nickname: String
    message: String
 }
-
+            </code></pre>
+        </section>
+        <section>
+          <h3>Summary (2)</h3>
+          <pre><code data-trim data-noescape>             
 type Author {
    id: ID!
    name: String!
@@ -232,7 +236,7 @@ type Query {
           <h3>Mutations</h3>
           <pre><code data-trim data-noescape>
 type Mutation {
-   createPost(title: String, body: String, authorId: ID): Post
+   createPost(title: String, body: String, authorId: ID): Post!
 }
             </code></pre>
         </section>
@@ -245,6 +249,20 @@ mutation {
       body
       publishState
    }
+}
+            </code></pre>
+        </section>
+        <section>
+          <h3>input</h3>
+          <pre><code data-trim data-noescape>
+input PostInput {
+  title: String!
+  body: String!
+  authorId: ID!
+}
+
+type Mutation {
+  createPost(post: PostInput!): Post!
 }
             </code></pre>
         </section>
