@@ -81,16 +81,6 @@ type Post {
             </code></pre>
         </section>
         <section>
-          <h3>ID type</h3>
-          <pre><code data-trim data-noescape>
-type Author {
-    id: ID!
-    name: String!
-    posts: [Post]!
-}
-            </code></pre>
-        </section>
-        <section>
           <h3>Mandatory fields</h3>
           <pre><code data-trim data-noescape>
 type User {
@@ -140,7 +130,7 @@ type Comment {
         <section>
           <h3>Summary (2)</h3>
           <pre><code data-trim data-noescape>             
-type Author {
+type User {
    id: ID!
    name: String!
    posts: [Post]!
@@ -254,7 +244,7 @@ mutation {
         </section>
         <section>
           <h3>input</h3>
-          <pre><code data-trim data-noescape>
+          <pre><code data-trim data-noescape class="nohighlight">
 input PostInput {
   title: String!
   body: String!
