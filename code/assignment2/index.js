@@ -7,23 +7,23 @@ const flights = [
     originId: 4,
     airplaneId: 1,
     departure: '2012-07-14T01:00:00Z',
-    arrival: '2012-07-14T09:00:00Z'
+    arrival: '2012-07-14T09:00:00Z',
   },
   {
     number: 'KL0002',
     destinationId: 4,
     originId: 3,
     airplaneId: 1,
-    departure: '2012-07-14T12:00:00Z',
-    arrival: '2012-07-14T14:00:00Z'
+    departure: '2012-07-14T02:00:00Z',
+    arrival: '2012-07-14T03:00:00Z',
   },
   {
     number: 'KL0003',
     destinationId: 1,
     originId: 3,
     airplaneId: 1,
-    departure: '2012-07-14T23:00:00Z',
-    arrival: '2012-07-15T09:00:00Z'
+    departure: '2012-07-14T00:00:00Z',
+    arrival: '2012-07-15T09:00:00Z',
   },
 ];
 
