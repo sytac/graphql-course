@@ -34,20 +34,20 @@ const airplanes = [
     },
     {
         id: 2,
-        name: 'Airbus A320-200'
+    name: 'Airbus A320-200',
     },
     {
         id: 3,
-        name: 'Boeing 777'
+    name: 'Boeing 777',
     },
     {
         id: 4,
-        name: 'Boeing 787 Dreamliner'
+    name: 'Boeing 787 Dreamliner',
     },
     {
         id: 5,
-        name: 'Airbus A380-800'
-    }
+    name: 'Airbus A380-800',
+  },
 ];
 
 const airports = [
