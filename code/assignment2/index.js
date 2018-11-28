@@ -65,8 +65,8 @@ const airports = [
     },
     {
         id: 4,
-        name: 'LHR'
-    }
+    name: 'LHR',
+  },
 ];
 
 

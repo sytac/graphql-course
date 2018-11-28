@@ -42,3 +42,5 @@ npm start
 
 Open your favorite editor and modify index.js
 Check the results in your favorite browser at http://localhost:4000
+
+Try an example here: https://graphql-assignment2.herokuapp.com/
