@@ -43,13 +43,16 @@
         </section>
         <section>
           <h3>Basic Types</h3>
-          <pre><code data-trim data-noescape>
+          <pre><code data-trim data-noescape class="nohighlight">
 String
 Int
 Float
 Boolean
 ID
             </code></pre>
+            <aside class="notes">
+              There are 5 basic types, ID is in essence a string, but it communicates intent with the developer
+            </aside>
         </section>
         <section>
           <h3>Type definitions</h3>
@@ -59,6 +62,9 @@ type Comment {
    message: String                    
 }
             </code></pre>
+            <aside class="notes">
+           comment is a basic type with two fields of type string
+            </aside>
         </section>
         <section>
           <h3>Relations</h3>
@@ -68,6 +74,9 @@ type User {
    posts: [Post]
 }
             </code></pre>
+            <aside class="notes">
+             User is a type with a relation post, the brackets indicate a list
+            </aside>
         </section>
         <section>
           <h3>Relations (2)</h3>
@@ -79,6 +88,9 @@ type Post {
    comments: [Comment]
 }
             </code></pre>
+            <aside class="notes">
+             Another example, in this case author is of type User
+            </aside>
         </section>
         <section>
           <h3>Mandatory fields</h3>
@@ -95,6 +107,10 @@ type Post {
    comments: [Comment!]!
 }
             </code></pre>
+            <aside class="notes">
+             If you want to guarantee a response for certain fields, you can add an !
+             why do you need two ! for a list?
+            </aside>
         </section>
         <section>
           <h3>Enums</h3>
@@ -112,6 +128,9 @@ type Post {
    comments: [Comment!]!
 }
             </code></pre>
+            <aside class="notes">
+             Enums are pretty straight forward, internally they are strings over the line
+            </aside>
         </section>
         <section>
           <h3>Summary</h3>
@@ -126,6 +145,9 @@ type Comment {
    message: String
 }
             </code></pre>
+            <aside class="notes">
+             A quick recap of what we built so far
+            </aside>
         </section>
         <section>
           <h3>Summary (2)</h3>
@@ -157,6 +179,10 @@ schema {
    query: Query
 }
             </code></pre>
+            <aside class="notes">
+             At the root level you have to define a special type query, this is the starting point of your query
+             schema is a special keyword that encapsulates field query of type query.
+            </aside>
         </section>
         <section>
           <h3>Query</h3>
@@ -176,6 +202,11 @@ schema {
    }
 }
             </code></pre>
+            <aside class="notes">
+             If you remember the previous slide, you start with the field post and define the fields you want to get in your response 
+             its about the shape of the data, there are no available query keywords like in sql to sort, order or filter.
+             if you remember, posts is a list, and all its subselections represent what you want for each post
+            </aside>
         </section>
         <section>
           <h3>Query (2)</h3>
@@ -187,6 +218,9 @@ schema {
    }
 }
             </code></pre>
+            <aside class="notes">
+             If you don't need all the fields you can ask for a very minimal set of data
+            </aside>
         </section>
         <section>
           <h3>Variables</h3>
@@ -196,6 +230,9 @@ type Query {
    post(id: ID): Post
 }
             </code></pre>
+            <aside class="notes">
+             id is a variable that you can optionally provide in your query
+            </aside>
         </section>
         <section>
           <h3>Variables (2)</h3>
@@ -210,6 +247,9 @@ type Query {
    }
 }
             </code></pre>
+            <aside class="notes">
+             example usage of a query that includes an id variable
+            </aside>
         </section>
         <section>
           <h3>Variables (3)</h3>
@@ -221,6 +261,9 @@ type Query {
    }
 }
             </code></pre>
+            <aside class="notes">
+             Not only top level fields can have variables
+            </aside>
         </section>
         <section>
           <h3>Mutations</h3>
@@ -229,6 +272,10 @@ type Mutation {
    createPost(title: String, body: String, authorId: ID): Post!
 }
             </code></pre>
+            <aside class="notes">
+             Mutations post/put/delete/patch have one common operation called mutation
+            a mutation always responds with data, on which you can select the fields you want
+            </aside>
         </section>
         <section>
           <h3>Mutations</h3>
@@ -241,6 +288,9 @@ mutation {
    }
 }
             </code></pre>
+            <aside class="notes">
+             By default, a graphql query is of type query, but if you want to run a mutation, you have to prefix the query with mutation
+            </aside>
         </section>
         <section>
           <h3>input</h3>
@@ -255,6 +305,9 @@ type Mutation {
   createPost(post: PostInput!): Post!
 }
             </code></pre>
+            <aside class="notes">
+             mutations can also receive special input parameters in addition to the basic types. Graphql made a distinction between input and query types to express the differences in data that are usually present between query and mutation scenario's
+            </aside>
         </section>
         <section>
           <h3>Assignment - preperation</h3>
@@ -286,6 +339,15 @@ type Mutation {
             <li>Union types</li>
             <li>Directives</li>
           </ul>
+          <aside class="notes">
+             what we didn't cover
+             fragments - reusable subselections
+             operation names - named queries
+             variables - pass in data seperately from your query and reference them 
+             interfaces - for polymorphism
+             union types - also for polymorphism
+             directives - annotate your schema and give meaning in your server implementation
+          </aside>
         </section>
       </div>
     </div>
