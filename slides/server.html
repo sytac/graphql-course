@@ -42,8 +42,11 @@
           <h5>By Jorigis Šnaras and Tom Hastjarjanto</h5>
         </section>
         <section>
-          <h1>Single Http endpoint</h1>
-          <h2>https://example.com/v1/graphql</h2>
+          <h3>Single Http endpoint</h3>
+          <p>https://example.com/v1/graphql</p>
+          <aside class="notes">
+            In contrast to rest, graphql has a single endpoint, usually receiving POST requests. Why? Browser limits.
+          </aside>
         </section>
         <section>
           <h3>Data mapping</h3>
@@ -61,9 +64,12 @@
               }
             
               type Query {
-                posts: [Post]!
+                posts: [Post!]!
               }
           </code></pre>
+          <aside class="notes">
+            If you remember the previous presentation, we had a query based on the schema, how does the server resolve this data?
+          </aside>
         </section>
         <section>
           <h3>Data mapping</h3>
@@ -84,6 +90,11 @@
                 body: String!
               }
           </code></pre>
+          <aside class="notes">
+            The top snippet is javascript. its an object with a key for the Query type, which has another key for the field posts.
+            the post field maps to a function that is executed while traversing the query to retrieve the data. In this case
+            from a rest endpoint
+            </aside>
         </section>
         <section>
           <h3>Data mapping</h3>
@@ -101,6 +112,10 @@
                   body: String!
                 }
             </code></pre>
+            <aside class="notes">
+            when posts are retrieved, its data of type posts, which again has fields, how are these fields retrieved?
+            This is the basic implementation, so if you don't write anything, the fields are directly mapped to the json fields 
+              </aside>
         </section>
         <section>
           <h3>Data mapping</h3>
@@ -114,6 +129,9 @@
                     }
                 }
             </code></pre>
+            <aside class="notes">
+            In this example we have a field author, which is a custom type, rather than a scalar with a subselection
+              </aside>
         </section>
         <section>
           <h3>Data mapping</h3>
@@ -136,19 +154,13 @@
                   name: String!
                 }
             </code></pre>
-        </section>
-        <section>
-          <h3>Data mapping</h3>
-          <pre><code data-trim data-noescape class="nohighlight">
-                  query {
-                      posts {
-                        title
-                        author {
-                          name
-                        }
-                      }
-                  }
-              </code></pre>
+            <aside class="notes">
+            Again in this case, field author is part of type Post, 
+            which is a function to retrieve authors by id, 
+            internally the data returned by the rest api only has a authorId which we have to manually fetch
+            as you can see, each resolver has a the data of its own type as its first argument
+            again by default the name attribute is mapepd
+              </aside>
         </section>
         <section>
           <h3>Data mapping</h3>
@@ -165,6 +177,10 @@
                     posts(limit: Int): [Post]!
                   }
               </code></pre>
+              <aside class="notes">
+                what happens if your field has an option to pass an argument? as a second parameter, the resolver receives all arguments passed to the query
+                and you can use them in your resolver
+                </aside>
         </section>
         <section>
             <h3>Assignment - preperation</h3>
@@ -187,7 +203,7 @@
             <small>Question: how many REST endpoints do we need to call to get this data?</small>
         </section>
         <section>
-                <h1>Assignment - solution</h1>
+            <h1>Assignment - solution</h1>
         </section>
         <section id="conclusion">
           <h1>FAQ</h1>
@@ -211,10 +227,16 @@
                 }                
             </code>
           </pre>
+          <aside class="notes">
+            errors, in case you noticed, the response has a data field, and sometimes an error field, it has the option to use error codes in the extensions field 
+          </aside>
         </section>
         <section>
           <h3>Authentication?</h3>
           <p>Cookies or header tokens</p>
+          <aside class="notes">
+authentication/authorization can be done as usual, you could build a login query or have other means (auth0/oauth) to retrieve tokens
+            </aside>
         </section>
         <section>
             <h3>Caching?</h3>
@@ -222,6 +244,10 @@
               <li>Cache data at the resolver level, or cache the underlying REST calls</li>
               <li>Persisted queries</li>
             </ul>
+            <aside class="notes">
+              it's not common to use http infrastructure to cache requests, because the requests are aggregated. its more common to cache the underlying requests at the resolver level
+              why? Usually a client has to do 30 rest calls to do what is now possible in one graphql query
+              </aside>
         </section>
         <section>
             <h3>Query abuse?</h3>
@@ -230,6 +256,10 @@
               <li>Query complexity cost limits</li>
               <li>Persisted queries</li>
             </ul>
+            <aside class="notes">
+              graphql is powerful - you can create any query you want, especially with deep nesting or cyclic fields. there are some options to limit what the server will accept
+              </aside>
+
         </section>
         <section>
           <h3>Profiling and Monitoring?</h3>
@@ -237,6 +267,9 @@
             <li>Apollo engine (proprietary)</li>
             <li>Apollo tracing</li>
           </ul>
+          <aside class="notes">
+            Again, you don't monitor individual endpoints, but you have libraries and extensions that can monitor your server at query level, so for each query it can meassure how long it takes to run the underlying resolvers
+            </aside>
         </section>
         <section>
           <h3>Deprecation?</h3>
@@ -246,6 +279,9 @@
                 oldField: String @deprecated(reason: "Use `newField`.")
               }
           </code></pre>
+          <aside class="notes">
+            This is a sneak preview of directives, you can annotate your field and your server can provide meaning to it as well as your client or tooling
+            </aside>
         </section>
         <section>
           <h3>Versioning?</h3>
@@ -253,6 +289,9 @@
             <li>Prefer an append-only scheme</li>
             <li>Version the endpoints (E.g. /v1/graphql)</li>
           </ul>
+          <aside class="notes">
+            The recommendation is to add only append to your schema, but to be realistic it makes sense to version your endpoint for cases where you have breaking changes in semantics of fields
+            </aside>
         </section>
         <section id="conclusion">
           <h1>TL;DL</h1>
