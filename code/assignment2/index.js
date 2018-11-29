@@ -28,43 +28,43 @@ const flights = [
 ];
 
 const airplanes = [
-    {
-        id: 1,
-        name: 'Boeing 737-200',
-    },
-    {
-        id: 2,
+  {
+    id: 1,
+    name: 'Boeing 737-200',
+  },
+  {
+    id: 2,
     name: 'Airbus A320-200',
-    },
-    {
-        id: 3,
+  },
+  {
+    id: 3,
     name: 'Boeing 777',
-    },
-    {
-        id: 4,
+  },
+  {
+    id: 4,
     name: 'Boeing 787 Dreamliner',
-    },
-    {
-        id: 5,
+  },
+  {
+    id: 5,
     name: 'Airbus A380-800',
   },
 ];
 
 const airports = [
-    {
-        id: 1,
-        name: 'AMS',
-    },
-    {
-        id: 2,
-        name: 'NRT',
-    },
-    {
-        id: 3,
-        name: 'JFK',
-    },
-    {
-        id: 4,
+  {
+    id: 1,
+    name: 'AMS',
+  },
+  {
+    id: 2,
+    name: 'NRT',
+  },
+  {
+    id: 3,
+    name: 'JFK',
+  },
+  {
+    id: 4,
     name: 'LHR',
   },
 ];
@@ -72,7 +72,8 @@ const airports = [
 
 const typeDefs = `
     type Query {
-        hello: String!
+        flights: [String!]!
+
     }
 `;
 
@@ -98,7 +99,7 @@ See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Obj
 
 const resolvers = {
   Query: {
-    hello: () => 'Hello'
+    flights: () => [],
   },
 };
 
