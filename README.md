@@ -32,6 +32,8 @@ npm start
 
 Open your favorite browser and navigate to http://localhost:4000
 
+Or try an example here https://graphql-assignment1.herokuapp.com/
+
 ## Assignment 2
 
 ```
