@@ -85,14 +85,14 @@ type Post {
           <pre><code data-trim data-noescape>
 type User {
    name: String!
-   posts: [Post]!
+   posts: [Post!]!
 }
 
 type Post {
    title: String!
    body: String!
    author: User!
-   comments: [Comment]!
+   comments: [Comment!]!
 }
             </code></pre>
         </section>
@@ -109,7 +109,7 @@ type Post {
    body: String!
    author: User!
    publishingState: PostPublishingState!
-   comments: [Comment]!
+   comments: [Comment!]!
 }
             </code></pre>
         </section>
@@ -133,7 +133,7 @@ type Comment {
 type User {
    id: ID!
    name: String!
-   posts: [Post]!
+   posts: [Post!]!
 }
 
 type Post {
@@ -142,7 +142,7 @@ type Post {
    body: String!
    author: User!
    publishingState: PostState!
-   comments: [Comment]!
+   comments: [Comment!]!
 }
             </code></pre>
         </section>
@@ -150,7 +150,7 @@ type Post {
           <h3>Query definition</h3>
           <pre><code data-trim data-noescape>   
 type Query {
-   posts: [Post]!
+   posts: [Post!]!
 }
 
 schema {
@@ -192,7 +192,7 @@ schema {
           <h3>Variables</h3>
           <pre><code data-trim data-noescape>
 type Query {
-   posts: [Post]!
+   posts: [Post!]!
    post($id: ID): Post
 }
             </code></pre>
